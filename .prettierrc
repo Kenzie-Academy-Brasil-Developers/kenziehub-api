@@ -1,0 +1,5 @@
+{
+  "singleQuote": true,
+  "trailingComa": "es5",
+  "semi": true
+}
