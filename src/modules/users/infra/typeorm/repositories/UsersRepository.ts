@@ -18,9 +18,17 @@ implements IUsersRepository {
   }
 
   public async findById(id: string): Promise<User | undefined> {
-    const findUser = await this.ormRepository.findOne(id);
+    try {
+      const findUser = await this.ormRepository.findOne({
+        where: {
+          id,
+        },
+      });
 
-    return findUser || undefined;
+      return findUser;
+    } catch (err) {
+      return undefined
+    }
   }
 
   public async findByEmail(email: string): Promise<User | undefined> {
@@ -30,7 +38,7 @@ implements IUsersRepository {
       },
     });
 
-    return findUser || undefined;
+    return findUser;
   }
 
   public async save(user: User): Promise<User> {
@@ -38,11 +46,16 @@ implements IUsersRepository {
     return saveUser;
   }
 
-  public async create({ name, email, password }: ICreateUserDTO): Promise<User> {
+  public async create({
+    name, email, password, bio, contact, course_module,
+  }: ICreateUserDTO): Promise<User> {
     const user = this.ormRepository.create({
       name,
       email,
       password,
+      bio,
+      contact,
+      course_module,
     })
 
     await this.ormRepository.save(user);

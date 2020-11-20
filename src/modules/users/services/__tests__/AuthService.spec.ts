@@ -16,6 +16,9 @@ describe('AuthUser', () => {
       name: 'John Doe',
       email: 'john@example.com',
       password: '123456',
+      bio: 'Lorem ipsum dolor emet',
+      contact: 'linkedin/in/johndoe',
+      course_module: 'Segundo módulo (Frontend Avançado)',
     })
 
     const auth = await authenticateUser.execute({
@@ -38,6 +41,9 @@ describe('AuthUser', () => {
       name: 'John Doe',
       email: 'john@example.com',
       password: '123456',
+      bio: 'Lorem ipsum dolor emet',
+      contact: 'linkedin/in/johndoe',
+      course_module: 'Segundo módulo (Frontend Avançado)',
     })
 
     expect(authenticateUser.execute({

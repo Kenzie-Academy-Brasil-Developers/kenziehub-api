@@ -30,6 +30,7 @@
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "class-transformer": "^0.3.1",
     "eslint-import-resolver-typescript": "^2.3.0",
     "express": "^4.17.1",
     "express-async-errors": "^3.1.1",

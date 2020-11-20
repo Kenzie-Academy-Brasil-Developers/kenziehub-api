@@ -1,7 +1,9 @@
 import CreateUserService from '@modules/users/services/CreateUserService';
 import FindUsersService from '@modules/users/services/FindUsersService';
+import FindSpecificUserService from '@modules/users/services/FindSpecificUserService';
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
+import { classToClass } from 'class-transformer';
 
 export default class UsersControllers {
   public async index(request: Request, response: Response): Promise<Response> {
@@ -9,11 +11,24 @@ export default class UsersControllers {
 
     const findUsers = await users.execute();
 
-    return response.json(findUsers);
+    return response.status(200).json(classToClass(findUsers));
+  }
+
+  public async show(request: Request, response: Response): Promise<Response> {
+    const { id } = request.params;
+    const user = container.resolve(FindSpecificUserService)
+
+    const findUser = await user.execute({
+      user_id: id,
+    });
+
+    return response.status(200).json(classToClass(findUser))
   }
 
   public async create(request: Request, response: Response): Promise<Response> {
-    const { name, email, password } = request.body;
+    const {
+      name, email, password, bio, contact, course_modules,
+    } = request.body;
 
     const createUser = container.resolve(CreateUserService);
 
@@ -21,10 +36,11 @@ export default class UsersControllers {
       name,
       email,
       password,
+      bio,
+      contact,
+      course_modules,
     });
 
-    delete user.password;
-
-    return response.json(user);
+    return response.status(201).json(user);
   }
 }

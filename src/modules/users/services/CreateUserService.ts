@@ -14,7 +14,9 @@ export default class CreateUserService {
     private hashProvider: IHashProvider,
   ) {}
 
-  public async execute({ name, email, password }: IUser): Promise<User> {
+  public async execute({
+    name, email, password, bio, contact, course_module,
+  }: IUser): Promise<User> {
     const checkUserExists = await this.userRepository.findByEmail(email);
 
     if (checkUserExists) {
@@ -27,6 +29,9 @@ export default class CreateUserService {
       name,
       email,
       password: hashedPassword,
+      bio,
+      contact,
+      course_module,
     });
 
     return user;

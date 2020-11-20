@@ -8,4 +8,6 @@ userRouter.post('/', userController.create);
 
 userRouter.get('/', userController.index);
 
+userRouter.get('/:id', userController.show);
+
 export default userRouter;

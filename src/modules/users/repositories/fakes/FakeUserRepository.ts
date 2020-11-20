@@ -31,11 +31,13 @@ implements IUsersRepository {
     return user;
   }
 
-  public async create({ name, email, password }: ICreateUserDTO): Promise<User> {
+  public async create({
+    name, email, password, bio, contact, course_module,
+  }: ICreateUserDTO): Promise<User> {
     const user = new User();
 
     Object.assign(user, {
-      id: uuid(), name, email, password,
+      id: uuid(), name, email, password, bio, contact, course_module,
     })
 
     this.users.push(user)
