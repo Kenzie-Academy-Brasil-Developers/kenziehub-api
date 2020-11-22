@@ -27,7 +27,7 @@ export default class UsersControllers {
 
   public async create(request: Request, response: Response): Promise<Response> {
     const {
-      name, email, password, bio, contact, course_modules,
+      name, email, password, bio, contact, course_module,
     } = request.body;
 
     const createUser = container.resolve(CreateUserService);
@@ -38,7 +38,7 @@ export default class UsersControllers {
       password,
       bio,
       contact,
-      course_modules,
+      course_module,
     });
 
     return response.status(201).json(user);

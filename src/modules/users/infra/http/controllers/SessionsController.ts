@@ -1,4 +1,5 @@
 import AuthService from '@modules/users/services/AuthService';
+import { classToClass } from 'class-transformer';
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
@@ -12,8 +13,6 @@ export default class SessionsController {
       email, password,
     });
 
-    delete user.password;
-
-    return response.json({ user, token });
+    return response.json(classToClass({ user, token }));
   }
 }

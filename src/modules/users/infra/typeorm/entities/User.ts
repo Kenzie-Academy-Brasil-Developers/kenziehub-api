@@ -23,7 +23,7 @@ class User {
   password: string;
 
   @Column()
-  avatar?: string;
+  avatar: string;
 
   @Column()
   course_module: string;
