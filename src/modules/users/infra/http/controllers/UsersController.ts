@@ -41,6 +41,6 @@ export default class UsersControllers {
       course_module,
     });
 
-    return response.status(201).json(user);
+    return response.status(201).json(classToClass(user));
   }
 }
