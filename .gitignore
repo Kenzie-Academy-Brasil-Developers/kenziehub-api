@@ -67,3 +67,4 @@ ios/Podfile.lock
 tmp/*
 !tmp/.gitkeep
 coverage/
+dist/
