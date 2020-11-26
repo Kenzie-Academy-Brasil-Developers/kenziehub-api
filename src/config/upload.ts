@@ -43,7 +43,7 @@ export default {
   config: {
     disk: {},
     aws: {
-      bucket: '',
+      bucket: 'kenziehub',
     },
   },
 } as IUploadConfig;
