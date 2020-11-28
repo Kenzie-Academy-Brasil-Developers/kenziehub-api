@@ -3,6 +3,7 @@ import ITech from '../dtos/ICreateTechDTO';
 
 export default interface ITechsRepository {
   findById(id: string): Promise<Tech | undefined>
+  findByTitleAndUserId(title: string, user_id: string): Promise<Tech | undefined>
   findAll(): Promise<Tech[]>
   create(user: ITech): Promise<Tech>
   save(user: Tech): Promise<Tech>

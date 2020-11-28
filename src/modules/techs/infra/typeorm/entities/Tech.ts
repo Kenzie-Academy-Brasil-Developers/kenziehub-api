@@ -15,7 +15,7 @@ class Tech {
   id: string;
 
   @Column()
-  name: string;
+  title: string;
 
   @Column()
   status: string;

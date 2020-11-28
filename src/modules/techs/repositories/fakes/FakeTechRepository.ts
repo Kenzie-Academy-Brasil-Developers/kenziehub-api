@@ -10,17 +10,28 @@ export default class FakeTechsRepository implements ITechsRepository {
     return this.techs;
   }
 
-  public async findById(id: string): Promise<Tech | undefined> {
-    const findUser = this.techs.find((tech) => tech.id === id)
+  public async findByTitleAndUserId(title: string, user_id: string): Promise<Tech | undefined> {
+    const findTech = this.techs.find((tech) => tech.user.id === user_id)
 
-    return findUser
+    return findTech
+  }
+
+  public async findById(id: string): Promise<Tech | undefined> {
+    const findTech = this.techs.find((tech) => tech.id === id)
+
+    return findTech
   }
 
   public async create({ title, status, user_id }: ICreateTechDTO): Promise<Tech> {
     const tech = new Tech();
 
     Object.assign(tech, {
-      id: uuid(), title, status, user_id,
+      id: uuid(),
+      title,
+      status,
+      user: {
+        id: user_id,
+      },
     })
 
     this.techs.push(tech)
