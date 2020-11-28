@@ -20,7 +20,7 @@ class Tech {
   @Column()
   status: string;
 
-  @ManyToOne(() => User, (user) => user.techs, { eager: false })
+  @ManyToOne(() => User, (user) => user.techs)
   @JoinColumn({ name: 'user_id' })
   user: User;
 
