@@ -4,9 +4,11 @@ import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
+  OneToMany,
 } from 'typeorm';
 import uploadConfig from '@config/upload'
 import { Exclude, Expose } from 'class-transformer';
+import Tech from '@modules/techs/infra/typeorm/entities/Tech';
 
 @Entity('users')
 class User {
@@ -35,6 +37,9 @@ class User {
 
   @Column()
   contact: string;
+
+  @OneToMany(() => Tech, (techs) => techs.user, { eager: true })
+  techs: Tech;
 
   @CreateDateColumn()
   created_at: Date;
