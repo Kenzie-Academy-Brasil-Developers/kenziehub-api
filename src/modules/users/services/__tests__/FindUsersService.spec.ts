@@ -22,7 +22,7 @@ describe('FindUsers', () => {
 
     const findUserService = new FindUsersService(fakeUserRepository);
 
-    const user = await findUserService.execute()
+    const user = await findUserService.execute({ skip: 1, take: 1 })
 
     expect(user).toBeTruthy()
   })
