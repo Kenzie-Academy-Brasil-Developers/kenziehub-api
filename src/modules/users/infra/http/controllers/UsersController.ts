@@ -11,7 +11,10 @@ export default class UsersControllers {
   public async index(request: Request, response: Response): Promise<Response> {
     const users = container.resolve(FindUsersService);
 
-    const findUsers = await users.execute();
+    const findUsers = await users.execute({
+      skip: request.pagination.realPage,
+      take: request.pagination.realTake,
+    });
 
     return response.status(200).json(classToClass(findUsers));
   }

@@ -1,4 +1,5 @@
 import uploadConfig from '@config/upload';
+import usePagination from '@shared/infra/http/middlewares/usePagination';
 import { Router } from 'express';
 import multer from 'multer';
 import ProfileController from '../controllers/ProfileController';
@@ -14,7 +15,7 @@ const profileController = new ProfileController()
 
 userRouter.post('/', userController.create);
 
-userRouter.get('/', userController.index);
+userRouter.get('/', usePagination, userController.index);
 
 userRouter.get('/:id', userController.show);
 

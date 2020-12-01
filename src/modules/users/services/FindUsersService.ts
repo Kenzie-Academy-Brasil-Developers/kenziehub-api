@@ -1,4 +1,5 @@
 import { inject, injectable } from 'tsyringe'
+import IPagination from '@shared/dtos/IPagination';
 import IUsersRepository from '../repositories/IUsersRepository';
 import User from '../infra/typeorm/entities/User';
 
@@ -9,8 +10,8 @@ export default class FindUsersService {
     private userRepository: IUsersRepository,
   ) {}
 
-  public async execute(): Promise<User[]> {
-    const users = await this.userRepository.findAll();
+  public async execute({ skip, take }: IPagination): Promise<User[]> {
+    const users = await this.userRepository.findAll({ skip, take });
 
     return users;
   }

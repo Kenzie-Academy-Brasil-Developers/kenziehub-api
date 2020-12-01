@@ -10,4 +10,6 @@ techRouter.use(ensureAuth);
 
 techRouter.post('/', techController.create);
 
+techRouter.put('/:id', techController.update);
+
 export default techRouter;

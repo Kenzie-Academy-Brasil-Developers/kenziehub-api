@@ -2,6 +2,7 @@ import { getRepository, Repository } from 'typeorm';
 import User from '@modules/users/infra/typeorm/entities/User';
 import IUsersRepository from '@modules/users/repositories/IUsersRepository';
 import ICreateUserDTO from '@modules/users/dtos/ICreateUserDTO';
+import IPagination from '@shared/dtos/IPagination';
 
 class UsersRepository
 implements IUsersRepository {
@@ -11,8 +12,8 @@ implements IUsersRepository {
     this.ormRepository = getRepository(User)
   }
 
-  public async findAll(): Promise<User[]> {
-    const users = await this.ormRepository.find();
+  public async findAll({ skip, take }: IPagination): Promise<User[]> {
+    const users = await this.ormRepository.find({ skip, take });
 
     return users;
   }

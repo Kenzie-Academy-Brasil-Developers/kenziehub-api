@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import * as yup from 'yup'
 import CreateTechService from '@modules/techs/services/CreateTechService';
+import UpdateTechService from '@modules/techs/services/UpdateTechService';
 import AppError from '@shared/errors/AppError';
 import { container } from 'tsyringe';
 
@@ -25,6 +26,31 @@ export default class UsersControllers {
       status,
       title,
       user_id: request.user.id,
+    })
+
+    return response.status(201).json(techs)
+  }
+
+  public async update(request: Request, response: Response): Promise<Response> {
+    const schema = yup.object().shape({
+      status: yup.string().required('you can only update the status on a user tech'),
+    })
+
+    await schema.validate(request.body, { abortEarly: false }).catch(({ errors }) => {
+      throw new AppError(errors)
+    })
+
+    const {
+      status,
+    } = request.body;
+
+    const { id } = request.params;
+
+    const updateTech = container.resolve(UpdateTechService);
+
+    const techs = await updateTech.execute({
+      id,
+      status,
     })
 
     return response.status(201).json(techs)
