@@ -6,6 +6,12 @@ import ITechsRepository from '../ITechRepository';
 export default class FakeTechsRepository implements ITechsRepository {
   private techs: Tech[] = []
 
+  public async delete(id: string): Promise<void> {
+    const findIndex = this.techs.findIndex((findTech) => findTech.id === id)
+
+    this.techs.splice(findIndex, 1);
+  }
+
   public async findAll(): Promise<Tech[]> {
     return this.techs;
   }

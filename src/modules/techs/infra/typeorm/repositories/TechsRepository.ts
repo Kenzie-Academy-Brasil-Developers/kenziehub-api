@@ -1,6 +1,6 @@
 import ICreateTechDTO from '@modules/techs/dtos/ICreateTechDTO';
 import Tech from '@modules/techs/infra/typeorm/entities/Tech';
-import { Repository, getRepository } from 'typeorm';
+import { Repository, getRepository, DeleteResult } from 'typeorm';
 import ITechsRepository from '../../../repositories/ITechRepository';
 
 export default class TechsRepository implements ITechsRepository {
@@ -57,5 +57,9 @@ export default class TechsRepository implements ITechsRepository {
     const newTech = await this.ormRepository.save(tech);
 
     return newTech;
+  }
+
+  public async delete(id: string): Promise<void | DeleteResult> {
+    return this.ormRepository.delete(id);
   }
 }

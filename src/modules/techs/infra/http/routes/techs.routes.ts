@@ -12,4 +12,6 @@ techRouter.post('/', techController.create);
 
 techRouter.put('/:id', techController.update);
 
+techRouter.delete('/:id', techController.delete)
+
 export default techRouter;

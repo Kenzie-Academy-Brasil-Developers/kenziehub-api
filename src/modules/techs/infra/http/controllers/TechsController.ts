@@ -4,6 +4,7 @@ import CreateTechService from '@modules/techs/services/CreateTechService';
 import UpdateTechService from '@modules/techs/services/UpdateTechService';
 import AppError from '@shared/errors/AppError';
 import { container } from 'tsyringe';
+import DeleteTechService from '@modules/techs/services/DeleteTechService';
 
 export default class UsersControllers {
   public async create(request: Request, response: Response): Promise<Response> {
@@ -54,5 +55,17 @@ export default class UsersControllers {
     })
 
     return response.status(201).json(techs)
+  }
+
+  public async delete(request: Request, response: Response): Promise<Response> {
+    const { id } = request.params;
+
+    const deleteTech = container.resolve(DeleteTechService);
+
+    await deleteTech.execute({
+      id,
+    })
+
+    return response.status(204).json()
   }
 }

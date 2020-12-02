@@ -6,7 +6,7 @@ import IUpdateTechDTO from '../dtos/IUpdateTechDTO';
 import ITechsRepository from '../repositories/ITechRepository';
 
 @injectable()
-export default class CreateTechService {
+export default class UpdateTechService {
   constructor(
     @inject('TechsRepository')
     private techsRepository: ITechsRepository,
