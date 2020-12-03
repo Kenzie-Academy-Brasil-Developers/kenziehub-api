@@ -8,4 +8,5 @@ export default interface IUsersRepository {
   create(user: IUser): Promise<User>
   save(user: User): Promise<User>
   findAll(pagination: IPagination): Promise<User[]>
+  findByTech(pagination: IPagination, tech: string): Promise<User[]>
 }

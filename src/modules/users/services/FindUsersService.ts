@@ -10,7 +10,13 @@ export default class FindUsersService {
     private userRepository: IUsersRepository,
   ) {}
 
-  public async execute({ skip, take }: IPagination): Promise<User[]> {
+  public async execute({ skip, take }: IPagination, tech?: string): Promise<User[]> {
+    if (tech) {
+      const users = await this.userRepository.findByTech({ skip, take }, tech);
+
+      return users;
+    }
+
     const users = await this.userRepository.findAll({ skip, take });
 
     return users;

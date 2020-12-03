@@ -1,4 +1,6 @@
-import { getRepository, Repository } from 'typeorm';
+import {
+  getRepository, Repository,
+} from 'typeorm';
 import User from '@modules/users/infra/typeorm/entities/User';
 import IUsersRepository from '@modules/users/repositories/IUsersRepository';
 import ICreateUserDTO from '@modules/users/dtos/ICreateUserDTO';
@@ -10,6 +12,18 @@ implements IUsersRepository {
 
   constructor() {
     this.ormRepository = getRepository(User)
+  }
+
+  public async findByTech({ skip, take }: IPagination, tech: string): Promise<User[]> {
+    const query = await this.ormRepository
+      .createQueryBuilder('user')
+      .limit(take)
+      .leftJoinAndSelect('user.techs', 'techs')
+      .leftJoinAndSelect('user.works', 'works')
+      .where('techs.title like :tech', { tech: `%${tech}%` })
+      .getMany()
+
+    return query;
   }
 
   public async findAll({ skip, take }: IPagination): Promise<User[]> {

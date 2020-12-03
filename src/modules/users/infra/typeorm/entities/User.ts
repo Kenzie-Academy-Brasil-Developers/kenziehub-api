@@ -39,11 +39,11 @@ class User {
   @Column()
   contact: string;
 
-  @OneToMany(() => Tech, (techs) => techs.user, { eager: true })
-  techs: Tech;
+  @OneToMany(() => Tech, (techs) => techs.user, { eager: true, cascade: true })
+  techs: Tech[];
 
   @OneToMany(() => Work, (works) => works.user, { eager: true })
-  works: Work;
+  works: Work[];
 
   @CreateDateColumn()
   created_at: Date;

@@ -7,8 +7,25 @@ import { container } from 'tsyringe';
 import { classToClass } from 'class-transformer';
 import AppError from '@shared/errors/AppError';
 
+interface IRequest {
+  tech: string;
+}
+
 export default class UsersControllers {
   public async index(request: Request, response: Response): Promise<Response> {
+    const { tech } = request.query as unknown as IRequest;
+
+    if (tech) {
+      const users = container.resolve(FindUsersService);
+
+      const findUsers = await users.execute({
+        skip: request.pagination.realPage,
+        take: request.pagination.realTake,
+      }, tech);
+
+      return response.status(200).json(classToClass(findUsers));
+    }
+
     const users = container.resolve(FindUsersService);
 
     const findUsers = await users.execute({
