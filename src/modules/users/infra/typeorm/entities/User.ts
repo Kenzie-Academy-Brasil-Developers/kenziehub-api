@@ -9,6 +9,7 @@ import {
 import uploadConfig from '@config/upload'
 import { Exclude, Expose } from 'class-transformer';
 import Tech from '@modules/techs/infra/typeorm/entities/Tech';
+import Work from '@modules/works/infra/typeorm/entities/Work';
 
 @Entity('users')
 class User {
@@ -40,6 +41,9 @@ class User {
 
   @OneToMany(() => Tech, (techs) => techs.user, { eager: true })
   techs: Tech;
+
+  @OneToMany(() => Work, (works) => works.user, { eager: true })
+  works: Work;
 
   @CreateDateColumn()
   created_at: Date;

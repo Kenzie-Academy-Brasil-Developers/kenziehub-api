@@ -21,6 +21,7 @@
   ],
   "rules": {
     "no-unused-vars": "off",
+    "no-unused-expressions": "off",
     "class-methods-use-this": "off",
     "import/extensions": [
       "off",

@@ -6,11 +6,11 @@ import AppError from '@shared/errors/AppError';
 import { container } from 'tsyringe';
 import DeleteTechService from '@modules/techs/services/DeleteTechService';
 
-export default class UsersControllers {
+export default class TechsController {
   public async create(request: Request, response: Response): Promise<Response> {
     const schema = yup.object().shape({
-      title: yup.string().required('name is required'),
-      status: yup.string().required('email is required'),
+      title: yup.string().required('title is required'),
+      status: yup.string().required('status is required'),
     })
 
     await schema.validate(request.body, { abortEarly: false }).catch(({ errors }) => {
