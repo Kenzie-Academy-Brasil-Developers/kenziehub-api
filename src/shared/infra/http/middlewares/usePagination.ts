@@ -25,8 +25,6 @@ export default function usePagination(req: Request, res: Response, next: NextFun
 
   let intPage = Number(page)
 
-  console.log()
-
   const nextUrl = `${process.env.APP_API_URL}${req.baseUrl}?perPage=${perPage}&page=${intPage += 1}`
 
   res.header({ page, perPage, nextUrl })

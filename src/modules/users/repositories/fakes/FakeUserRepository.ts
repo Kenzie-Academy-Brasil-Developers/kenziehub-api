@@ -2,10 +2,15 @@ import User from '@modules/users/infra/typeorm/entities/User';
 import IUsersRepository from '@modules/users/repositories/IUsersRepository';
 import ICreateUserDTO from '@modules/users/dtos/ICreateUserDTO';
 import { v4 as uuid } from 'uuid';
+import IPagination from '@shared/dtos/IPagination';
 
 class UsersRepository
 implements IUsersRepository {
   private users: User[] = []
+
+  public async findByTech(pagination: IPagination, tech: string): Promise<User[]> {
+    throw new Error('Method not implemented.');
+  }
 
   public async findAll(): Promise<User[]> {
     return this.users;

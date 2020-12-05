@@ -34,7 +34,7 @@ export default class TechsRepository implements ITechsRepository {
       const findTech = await this.ormRepository.findOne(id);
 
       return findTech;
-    } catch (err) {
+    } catch (e) {
       return undefined
     }
   }

@@ -18,6 +18,7 @@ implements IUsersRepository {
     const query = await this.ormRepository
       .createQueryBuilder('user')
       .limit(take)
+      .offset(skip)
       .leftJoinAndSelect('user.techs', 'techs')
       .leftJoinAndSelect('user.works', 'works')
       .where('techs.title like :tech', { tech: `%${tech}%` })
