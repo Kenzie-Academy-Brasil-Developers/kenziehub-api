@@ -3,10 +3,15 @@ import IUsersRepository from '@modules/users/repositories/IUsersRepository';
 import ICreateUserDTO from '@modules/users/dtos/ICreateUserDTO';
 import { v4 as uuid } from 'uuid';
 import IPagination from '@shared/dtos/IPagination';
+import { DeleteResult } from 'typeorm';
 
 class UsersRepository
 implements IUsersRepository {
   private users: User[] = []
+
+  public async delete(id: string): Promise<void | DeleteResult> {
+    throw new Error('Method not implemented.');
+  }
 
   public async findByTech(pagination: IPagination, tech: string): Promise<User[]> {
     throw new Error('Method not implemented.');

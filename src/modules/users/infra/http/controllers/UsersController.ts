@@ -1,6 +1,7 @@
 import CreateUserService from '@modules/users/services/CreateUserService';
 import FindUsersService from '@modules/users/services/FindUsersService';
 import FindSpecificUserService from '@modules/users/services/FindSpecificUserService';
+import DeleteUserService from '@modules/users/services/DeleteUserService';
 import * as yup from 'yup';
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
@@ -77,5 +78,17 @@ export default class UsersControllers {
     });
 
     return response.status(201).json(classToClass(user));
+  }
+
+  public async delete(request: Request, response: Response): Promise<Response> {
+    const { id } = request.params;
+
+    const user = container.resolve(DeleteUserService)
+
+    await user.execute({
+      id,
+    })
+
+    return response.status(204).json()
   }
 }

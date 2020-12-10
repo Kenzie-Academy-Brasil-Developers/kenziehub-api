@@ -1,4 +1,5 @@
 import {
+  DeleteResult,
   getRepository, Repository,
 } from 'typeorm';
 import User from '@modules/users/infra/typeorm/entities/User';
@@ -77,6 +78,10 @@ implements IUsersRepository {
     await this.ormRepository.save(user);
 
     return user;
+  }
+
+  public async delete(id: string): Promise<void | DeleteResult> {
+    return this.ormRepository.delete(id);
   }
 }
 

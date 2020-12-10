@@ -19,6 +19,8 @@ userRouter.get('/', usePagination, userController.index);
 
 userRouter.get('/:id', userController.show);
 
+userRouter.delete('/:id', userController.delete)
+
 userRouter.use(ensureAuth);
 
 userRouter.patch(
