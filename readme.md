@@ -150,7 +150,7 @@ Com o parâmetro tech, podemos filtrar por tecnologia.
 Lembrando que no cabeçalho da resposta, temos as informações sobre a paginação, e o nextUrl para acessar a próxima página.
 
 Cabeçalho da resposta:
-> nextUrl: http://kenziehub.me/users?perPage=15&page=2 <br/>
+> nextUrl: https://kenziehub.herokuapp.com/users?perPage=15&page=2 <br/>
 > page: 1 <br/>
 > perPage: 15
 
