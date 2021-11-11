@@ -21,7 +21,7 @@ Este é o backend da aplicação KenzieHub - Um hub de portfólios de programado
 
 A API tem um total de 13 endpoints, sendo em volta principalmente do usuário (dev) - podendo cadastrar seu perfil, tecnologias que estuda e trabalhos realizados. <br/>
 O JSON para utilizar no Insomnia é este aqui -> https://drive.google.com/file/d/1kALZ2TZywU4OOqwqWeVuu8H13fHrxt_2/view
-Para importar o JSON no Insomnia é só clicar na palavra "Insomnia" no canto superior esquerdo. Nesse dropdown é só clicar em "Import / Export > Import Data > From Url" e colocar o link acima :v:
+Para importar o JSON no Insomnia é só baixar o arquivo. Na palavra "Insomnia" no canto superior esquerdo. Nesse dropdown é só clicar em "Import / Export > Import Data > From File" e selecionar o arquivo que foi feito download :v:
 
 O url base da API é https://kenziehub.herokuapp.com
 
