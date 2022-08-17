@@ -443,7 +443,7 @@ avatar: <Arquivo de imagem>
 
 Nesse endpoint podemos atualizar qualquer dado do usuário, e a senha também, porém é necessário enviar a antiga senha no campo "old_password" caso o usuário queira atualizar a senha.
 
-`PUT /users/profile - FORMATO DA REQUISIÇÃO`
+`PUT /profile - FORMATO DA REQUISIÇÃO`
 
 ```json
 {
