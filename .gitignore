@@ -58,8 +58,6 @@ buck-out/
 
 # CocoaPods
 /ios/Pods/
-yarn.lock
-package-lock.json
 ios/Podfile.lock
 
 *.lock
