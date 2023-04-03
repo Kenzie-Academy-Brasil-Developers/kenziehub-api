@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img alt="KenzieHub" title="KenzieHub" src="https://kenzie.com.br/images/logoblue.svg" width="100px" />
+  <img alt="KenzieHub" title="KenzieHub" src="https://kenzie.com.br/_next/image?url=%2Fimages%2Flogo.png&w=640&q=75" width="100px" />
 </h1>
 
 <h1 align="center">
@@ -22,8 +22,12 @@ A API tem um total de 13 endpoints, sendo em volta principalmente do usuário (d
 
 <a style="display:flex; justify-content:center" href="https://insomnia.rest/run/?label=Kenzie%20Hub&uri=https%3A%2F%2Fgithub.com%2FKenzie-Academy-Brasil-Developers%2Fkenziehub-api%2Fblob%2Fmaster%2FInsomnia_kenzie_hub.json" target="_blank"><img src="https://insomnia.rest/images/run.svg" alt="Run in Insomnia"></a>
 
+
 <blockquote> Para importar o JSON no Insomnia é só clicar no botão "Run in Insomnia". Depois é só seguir os passos que ele irá importar todos os endpoints em seu insomnia.
+Em seguida troque o ambiente (environment) para "Production", conforme imagem abaixo.
 </blockquote>
+ <img alt="KenzieHub" title="KenzieHub" src="https://github.com/Kenzie-Academy-Brasil-Developers/kenziehub-api/blob/master/insomnia_print.png" />
+
 <br>
 
 A url base da API é https://kenziehub.herokuapp.com
