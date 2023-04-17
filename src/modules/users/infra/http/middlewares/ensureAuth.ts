@@ -16,15 +16,24 @@ export default function ensureAuth(req: Request, res: Response, next: NextFuncti
     throw new AppError('JWT Not found', 404);
   }
 
-  const [, token] = authHeader.split(' ');
+  try {
+    const [, token] = authHeader.split(' ');
 
-  const { secret } = authConfig.jwt;
-  const decoded = verify(token, secret);
-  const { sub } = decoded as ITokenPayload;
+    const { secret } = authConfig.jwt;
+    const decoded = verify(token, secret);
+    const { sub } = decoded as ITokenPayload;
 
-  req.user = {
-    id: sub,
-  };
+    req.user = {
+      id: sub,
+    };
 
-  return next();
+    return next();
+  } catch (error) {
+    if(error instanceof Error) {
+      if (error.message === 'Token expired') {
+        throw new AppError('Token expirado.', 401);
+      }
+      throw new AppError('Token inválido.', 401);
+    }
+  }
 }
